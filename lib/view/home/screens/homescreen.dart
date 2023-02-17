@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sebha_app2/constants/mainconstants.dart';
+import 'package:sebha_app2/main/timepray.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -99,89 +100,95 @@ body:
               elevation: 5,
               color: Color(0xff212121),
               shadowColor: Colors.black.withOpacity(.1),
-              child: Column(
-                children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(alignment: Alignment.centerRight,width: 160,height: 48,
-                        decoration: BoxDecoration(color: green,borderRadius:BorderRadius.only(bottomLeft: Radius.circular(10),topRight: Radius.circular(10))),
+              child:FutureBuilder(
+                  future: Timepray.getTimePray(),
+                  builder: (BuildContext context,AsyncSnapshot<dynamic>snapshot){
+                    return (snapshot.hasData)?Column(
+                      children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(alignment: Alignment.centerRight,width: 160,height: 48,
+                              decoration: BoxDecoration(color: green,borderRadius:BorderRadius.only(bottomLeft: Radius.circular(10),topRight: Radius.circular(10))),
 
-                        child: Row(mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text('مواعيد الصلاة',style:
-                          TextStyle(fontWeight: FontWeight.w600,
-                            fontSize: textFont16,
-                            color: black,),),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10,left: 10),
-                            child: SvgPicture.asset(Mosqueico),
+                              child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text('مواعيد الصلاة',style:
+                                  TextStyle(fontWeight: FontWeight.w600,
+                                    fontSize: textFont16,
+                                    color: black,),),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10,left: 10),
+                                    child: SvgPicture.asset(Mosqueico),
+                                  ),
+                                ],
+                              ),),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+
+                              Text('${snapshot.data.fajr}',style: TextStyle(color: white)),
+                              Text('الفجر',style: TextStyle(color: white)),
+                            ],
                           ),
-                        ],
-                      ),),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
 
-                        Text('٥:٢١ ص',style: TextStyle(color: white)),
-                        Text('الفجر',style: TextStyle(color: white)),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                              Text('${snapshot.data.shurooq}',style: TextStyle(color: white)),
+                              Text('الشروق',style: TextStyle(color: white)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
 
-                        Text('٦:٥٤ ص',style: TextStyle(color: white)),
-                        Text('الشروق',style: TextStyle(color: white)),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                              Text('${snapshot.data.dhuhr}',style: TextStyle(color: white)),
+                              Text('الظهر',style: TextStyle(color: white)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
 
-                        Text('١٢:٠١ م',style: TextStyle(color: white)),
-                        Text('الظهر',style: TextStyle(color: white)),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                              Text('${snapshot.data.asr}',style: TextStyle(color: white)),
+                              Text('العصر',style: TextStyle(color: white)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
 
-                        Text('٢:٤٩ م',style: TextStyle(color: white)),
-                        Text('العصر',style: TextStyle(color: white)),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                              Text('${snapshot.data.maghrib}',style: TextStyle(color: white)),
+                              Text('المغرب',style: TextStyle(color: white)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
 
-                        Text('٥:٠٨ م',style: TextStyle(color: white)),
-                        Text('المغرب',style: TextStyle(color: white)),
+                              Text('${snapshot.data.isha}',style: TextStyle(color: white)),
+                              Text('العشاء',style: TextStyle(color: white)),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12,left: 24, right: 24,bottom: 12),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                    ):Container();
+                  })
 
-                        Text('٦:٣١ م',style: TextStyle(color: white)),
-                        Text('العشاء',style: TextStyle(color: white)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+
 
             ),
           ),

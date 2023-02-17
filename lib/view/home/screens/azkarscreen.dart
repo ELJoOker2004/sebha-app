@@ -41,22 +41,39 @@ class _AzkarScreenState extends State<AzkarScreen> {
           ),
             ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(7.0),
-          child: Stack(
-            children: [
-              Image.asset("$Masa",width: MediaQuery.of(context).size.width,),
-              const Positioned(bottom: 20,right: 20,
-                child:Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Text('أذكار المساء',style: TextStyle(
-                      fontSize: textFont18,fontWeight: FontWeight.w600,color: white),),
-                ),
-              ) ],
+         GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => msaa()),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(7.0),
+              child: Stack(
+                children: [
+                  Image.asset("$Masa", width: MediaQuery.of(context).size.width),
+                  const Positioned(
+                    bottom: 20,
+                    right: 20,
+                    child: Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Text(
+                        'أذكار المساء',
+                        style: TextStyle(
+                            fontSize: textFont18,
+                            fontWeight: FontWeight.w600,
+                            color: white),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
 
-        ),
-      Padding(
+
+        Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(child: Text('أذكار متنوعة   ',style: TextStyle(fontWeight: FontWeight.w600,fontSize: textFont18,color:white),),alignment: Alignment.centerRight,),
       ),
